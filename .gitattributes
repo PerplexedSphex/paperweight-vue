@@ -1,0 +1,26 @@
+# default behavior
+* text=auto
+
+# normalized and converted to native line endings on checkout
+*.txt           text
+*.rst           text
+*.md            text
+*.py            text
+*.html          text
+*.css           text
+*.scss          text
+*.js            text
+*.vue           text
+*.sh            text
+*.json          text
+Procfile        text
+Procfile.lock   text
+Pipfile         text
+Pipfile.lock    text
+
+# always have CRLF line endings
+
+# binary files
+*.png binary
+*.jpg binary
+*.ico binary
