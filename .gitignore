@@ -1,3 +1,19 @@
+# specific files & folders
+venv
+staticfiles
+.env
+.idea
+.sass-cache/
+.vscode/
+node_modules/
+
+# filetypes
+*.orig
+*.css.map
+*.js.map
+
+## Everything below is the github default python gitignore
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
