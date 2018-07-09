@@ -50,6 +50,10 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'rest_framework',
     'rest_framework.authtoken',
+    'authtools',
+
+    # this project's apps
+    'accounts'
 ]
 
 MIDDLEWARE = [
@@ -148,7 +152,7 @@ STATICFILES_DIRS = [
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# LOGIN_URL = '/account/login'
+AUTH_USER_MODEL = 'accounts.EncampUser'
 LOGIN_REDIRECT_URL = '/'
 
 REST_FRAMEWORK = {

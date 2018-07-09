@@ -1,3 +1,6 @@
 from django.contrib import admin
+from authtools.admin import UserAdmin
 
-# Register your models here.
+from .models import EncampUser
+
+admin.site.register(EncampUser, UserAdmin)

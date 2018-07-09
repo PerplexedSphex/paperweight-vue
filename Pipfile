@@ -19,6 +19,8 @@ whitenoise = "==3.2"
 django-widget-tweaks = "*"
 "psycopg2-binary" = "*"
 djangorestframework = "*"
+django-authtools = "*"
 
 
 [dev-packages]
+
