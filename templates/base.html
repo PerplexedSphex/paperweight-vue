@@ -3,21 +3,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>{% block title %}{% endblock %}</title>
+  <title>{% block title %}TurboTier2{% endblock title %}</title>
   <meta charset="utf-8">
   <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
-  <link rel="stylesheet" href="{% static 'css/app.css' %}">
+  {% block stylesheets %}
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+  {% endblock stylesheets %}
 </head>
 
 <body>
 
 {% block content %}
-{% endblock %}
+{% endblock content %}
 
 <!-- load scripts -->
+{% block javascripts %}
 <script src="{% static 'js/vendor.js' %}"></script>
 <script src="{% static 'js/app.js' %}"></script>
-{% block custom_scripts %}{% endblock %}
+{% endblock javascripts %}
 
 </body>
 
