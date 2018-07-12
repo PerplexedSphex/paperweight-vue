@@ -2,4 +2,12 @@
 
 {% block content %}
   TurboTier2 login page
+
+  <form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    {{ form.username }}
+    {{ form.password }}
+    <button type="submit">Sign in</button>
+    <input type="hidden" name="next" value="{{ next }}" />
+  </form>
 {% endblock content %}
