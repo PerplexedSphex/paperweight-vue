@@ -2,6 +2,7 @@
 
 {% block content %}
   TurboTier2 Signup Page
+
   <form method="post" action="{% url 'signup' %}">
     {% csrf_token %}
     Email: {{ form.email }}
