@@ -3,17 +3,14 @@ from authtools.admin import (
     UserAdmin, BASE_FIELDS, ADVANCED_PERMISSION_FIELDS, DATE_FIELDS,
 )
 from .models import EncampUser
+from core.models import AddressMixin
 
 
 class EncampUserAdmin(UserAdmin):
-    ADDRESS_FIELDS = (
-        'Address',
-        {'fields': ('street_address', 'city', 'state', 'zip_code')}
-    )
     fieldsets = (
         BASE_FIELDS,
         ADVANCED_PERMISSION_FIELDS,
-        ADDRESS_FIELDS,
+        AddressMixin.ADMIN_FIELDSET,
         DATE_FIELDS,
     )
     list_display = ('is_active', 'email', 'first_name', 'last_name', 'is_superuser', 'is_staff',)

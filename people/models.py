@@ -1,6 +1,7 @@
 from django.db import models
 
 from core.models import AddressMixin
+from core.managers import EncampBaseModelManager
 
 
 class Person(AddressMixin, models.Model):
@@ -8,6 +9,7 @@ class Person(AddressMixin, models.Model):
         'accounts.AccountHolder',
         on_delete=models.CASCADE,
     )
+    objects = EncampBaseModelManager()
 
     class Meta:
         verbose_name = 'person'

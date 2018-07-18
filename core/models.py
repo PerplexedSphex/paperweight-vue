@@ -27,6 +27,11 @@ class AddressMixin(models.Model):
             self.full_address_raw = " ".join(address_array)
         super().save(*args, **kwargs)
 
+    ADMIN_FIELDSET = (
+        'Address',
+        {'fields': ('street_address', 'city', 'state', 'zip_code')}
+    )
+
 
 class LatLonMixin(models.Model):
     """Not tested"""
