@@ -22,7 +22,7 @@ class AddressMixin(models.Model):
         if self.state:
             address_array.append(self.state)
         if self.zip_code:
-            address_array.append(self.zip_code)
+            address_array.append(str(self.zip_code))
         if address_array:
             self.full_address_raw = " ".join(address_array)
         super().save(*args, **kwargs)
@@ -30,7 +30,9 @@ class AddressMixin(models.Model):
 
 class LatLonMixin(models.Model):
     """Not tested"""
+
+    class Meta:
+        abstract = True
+
     latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
     longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
-
-

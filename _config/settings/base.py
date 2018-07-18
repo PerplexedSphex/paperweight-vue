@@ -53,7 +53,8 @@ INSTALLED_APPS = [
     'authtools',
 
     # this project's apps
-    'accounts'
+    'core',
+    'accounts',
 ]
 
 MIDDLEWARE = [
