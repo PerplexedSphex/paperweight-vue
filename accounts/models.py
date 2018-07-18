@@ -8,6 +8,13 @@ class EncampUser(AddressMixin, AbstractEmailUser):
     """Creating this now so it's easier to customize later without borking the db"""
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
+    account_holder = models.ForeignKey(
+        'accounts.AccountHolder',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        editable=False,
+    )
 
     @property
     def name(self):
