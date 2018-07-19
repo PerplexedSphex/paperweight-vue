@@ -18,14 +18,16 @@ from django.urls import path, include
 from django.views.generic import TemplateView
 from rest_framework.routers import DefaultRouter
 
+from people.viewsets import PersonViewSet
+
 
 rest_framework_router = DefaultRouter()
 
-# rest_framework_router.register(
-#     prefix='',
-#     viewset='',
-#     base_name='',
-# )
+rest_framework_router.register(
+    prefix='person',
+    viewset=PersonViewSet,
+    base_name='person',
+)
 
 
 urlpatterns = [

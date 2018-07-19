@@ -51,7 +51,9 @@ INSTALLED_APPS = [
     'authtools',
 
     # this project's apps
-    'accounts'
+    'core',
+    'accounts',
+    'people',
 ]
 
 MIDDLEWARE = [
@@ -150,7 +152,7 @@ STATICFILES_DIRS = [
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-AUTH_USER_MODEL = 'accounts.EncampUser'
+AUTH_USER_MODEL = 'accounts.User'
 LOGIN_REDIRECT_URL = '/'
 
 REST_FRAMEWORK = {
