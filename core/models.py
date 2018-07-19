@@ -1,6 +1,19 @@
 from django.db import models
 
 from .constants import State
+from .managers import EncampBaseModelManager
+
+
+class TenantMixin(models.Model):
+    class Meta:
+        abstract = True
+
+    record_owner = models.ForeignKey(
+        'accounts.AccountHolder',
+        on_delete=models.CASCADE,
+        related_name="%(app_label)s_%(class)s_owned_set"
+    )
+    objects = EncampBaseModelManager()
 
 
 class AddressMixin(models.Model):

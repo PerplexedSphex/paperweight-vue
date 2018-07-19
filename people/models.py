@@ -1,16 +1,9 @@
 from django.db import models
 
-from core.models import AddressMixin
-from core.managers import EncampBaseModelManager
+from core.models import TenantMixin, AddressMixin
 
 
-class Person(AddressMixin, models.Model):
-    record_owner = models.ForeignKey(
-        'accounts.AccountHolder',
-        on_delete=models.CASCADE,
-    )
-    objects = EncampBaseModelManager()
-
+class Person(TenantMixin, AddressMixin, models.Model):
     class Meta:
         verbose_name = 'person'
         verbose_name_plural = 'people'

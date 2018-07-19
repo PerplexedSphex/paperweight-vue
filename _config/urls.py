@@ -25,7 +25,7 @@ rest_framework_router = DefaultRouter()
 #     prefix='',
 #     viewset='',
 #     base_name='',
-# )
+# )6
 
 
 urlpatterns = [
