@@ -23,3 +23,8 @@ class EncampBaseModelManager(models.Manager):
         else:
             # todo - figure out how to check if an object requires no permission to view
             return self.none()
+
+    def create_owned(self, record_owner, **kwargs):
+        obj = self.model(record_owner=record_owner, **kwargs)
+        obj.save()
+        return obj
