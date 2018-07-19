@@ -18,6 +18,7 @@ from django.urls import path, include
 from django.views.generic import TemplateView
 from rest_framework.routers import DefaultRouter
 
+from accounts.viewsets import UserViewSet
 from people.viewsets import PersonViewSet
 
 
@@ -27,6 +28,12 @@ rest_framework_router.register(
     prefix='person',
     viewset=PersonViewSet,
     base_name='person',
+)
+
+rest_framework_router.register(
+    prefix='user',
+    viewset=UserViewSet,
+    base_name='user',
 )
 
 
