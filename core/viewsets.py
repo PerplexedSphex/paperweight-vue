@@ -21,7 +21,6 @@ class EncampModelViewSet(DefaultsMixin, ModelViewSet):
     def get_queryset(self):
         return self.model.objects.of_requester(self.request)
 
-    def create(self, request, *args, **kwargs):
-        request.data = dict(request.data)
-        request.data['record_owner'] = request.user.account_holder.id
-        return super().create(request, *args, **kwargs)
+    def perform_create(self, serializer):
+        record_owner = self.request.user.account_holder
+        serializer.save(record_owner=record_owner)
