@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class TenantModelManager(models.Manager):
+class EncampBaseModelManager(models.Manager):
 
     def owned_by(self, owner):
         """Get records owned by specific owner

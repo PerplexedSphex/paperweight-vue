@@ -1,10 +1,11 @@
+import uuid as uuid_lib
 from django.db import models
 
 from .constants import State
-from .managers import TenantModelManager
+from .managers import EncampBaseModelManager
 
 
-class TenantMixin(models.Model):
+class EncampBaseModel(models.Model):
     class Meta:
         abstract = True
 
@@ -14,7 +15,8 @@ class TenantMixin(models.Model):
         related_name="%(app_label)s_%(class)s_owned_set",
         editable=False
     )
-    objects = TenantModelManager()
+    uuid = models.UUIDField(db_index=True, default=uuid_lib.uuid4, unique=True, editable=False)
+    objects = EncampBaseModelManager()
 
 
 class AddressMixin(models.Model):

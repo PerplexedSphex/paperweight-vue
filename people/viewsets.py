@@ -1,9 +1,8 @@
-from core.viewsets import TenantModelViewSet
+from core.viewsets import EncampBaseModelViewSet
 from .models import Person
 from .serializers import PersonSerializer
 
 
-class PersonViewSet(TenantModelViewSet):
+class PersonViewSet(EncampBaseModelViewSet):
     model = Person
     serializer_class = PersonSerializer
-    lookup_field = 'uuid'
