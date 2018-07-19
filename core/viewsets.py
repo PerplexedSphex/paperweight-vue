@@ -16,11 +16,12 @@ class DefaultsMixin:
 
 class EncampModelViewSet(DefaultsMixin, ModelViewSet):
     """An ABSTRACT class, which other model viewsets should inherit from"""
-    model = None  # model must inherit from EncampBaseModel
+    model = None  # model must inherit from TenantMixin
 
     def get_queryset(self):
         return self.model.objects.of_requester(self.request)
 
     def create(self, request, *args, **kwargs):
+        request.data = dict(request.data)
         request.data['record_owner'] = request.user.account_holder.id
         return super().create(request, *args, **kwargs)
