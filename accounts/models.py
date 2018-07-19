@@ -16,7 +16,6 @@ class User(AddressMixin, AbstractEmailUser):
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
-        editable=False,
         help_text='Entity that has an account with Encamp with which this user is associated.'
     )
 
