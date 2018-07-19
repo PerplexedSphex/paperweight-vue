@@ -1,5 +1,3 @@
-from rest_framework import viewsets
-
 from core.viewsets import EncampModelViewSet
 from .models import Person
 from .serializers import PersonSerializer
@@ -8,3 +6,4 @@ from .serializers import PersonSerializer
 class PersonViewSet(EncampModelViewSet):
     model = Person
     serializer_class = PersonSerializer
+    lookup_field = 'uuid'

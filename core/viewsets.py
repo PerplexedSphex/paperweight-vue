@@ -23,4 +23,8 @@ class EncampModelViewSet(DefaultsMixin, ModelViewSet):
 
     def perform_create(self, serializer):
         record_owner = self.request.user.account_holder
+        assert record_owner, (
+            'Cannot create object as the User is not associated with'
+            'an AccountHolder.'
+        )
         serializer.save(record_owner=record_owner)

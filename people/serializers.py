@@ -9,5 +9,5 @@ class PersonSerializer(serializers.ModelSerializer):
         fields = (
             'first_name', 'last_name', 'email',
             'street_address', 'city', 'state', 'zip_code',
-            'full_address_raw', 'record_owner',
+            'full_address_raw', 'record_owner', 'uuid',
         )
