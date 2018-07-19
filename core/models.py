@@ -1,7 +1,7 @@
 from django.db import models
 
 from .constants import State
-from .managers import EncampBaseModelManager
+from .managers import TenantModelManager
 
 
 class TenantMixin(models.Model):
@@ -14,7 +14,7 @@ class TenantMixin(models.Model):
         related_name="%(app_label)s_%(class)s_owned_set",
         editable=False
     )
-    objects = EncampBaseModelManager()
+    objects = TenantModelManager()
 
 
 class AddressMixin(models.Model):

@@ -2,7 +2,7 @@ from django.contrib import admin
 from authtools.admin import (
     UserAdmin, BASE_FIELDS, ADVANCED_PERMISSION_FIELDS, DATE_FIELDS,
 )
-from .models import EncampUser
+from .models import User
 from core.models import AddressMixin
 
 
@@ -18,4 +18,4 @@ class EncampUserAdmin(UserAdmin):
     search_fields = ('email', 'first_name', 'last_name',)
 
 
-admin.site.register(EncampUser, EncampUserAdmin)
+admin.site.register(User, EncampUserAdmin)

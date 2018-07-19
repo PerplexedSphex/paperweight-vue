@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class EncampBaseModelManager(models.Manager):
+class TenantModelManager(models.Manager):
 
     def owned_by(self, owner):
         """Get records owned by specific owner
@@ -17,14 +17,7 @@ class EncampBaseModelManager(models.Manager):
         Params:
         request -- django request
         """
-        if request.user.is_authenticated:
-            # if request.user.has_perm()
+        if request.user.account_holder:
             return self.owned_by(request.user.account_holder)
         else:
-            # todo - figure out how to check if an object requires no permission to view
             return self.none()
-
-    def create_owned(self, record_owner, **kwargs):
-        obj = self.model(record_owner=record_owner, **kwargs)
-        obj.save()
-        return obj
