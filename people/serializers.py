@@ -5,6 +5,10 @@ from .models import Person
 
 class PersonSerializer(serializers.ModelSerializer):
     url = serializers.HyperlinkedIdentityField(view_name='person-detail', lookup_field='uuid')
+    record_owner = serializers.SlugRelatedField(
+        read_only=True,
+        slug_field='uuid',
+    )
 
     class Meta:
         model = Person
