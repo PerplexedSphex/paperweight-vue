@@ -47,9 +47,7 @@ INSTALLED_APPS = [
     # http://whitenoise.evans.io/en/stable/django.html#using-whitenoise-in-development
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',  # not actually third party but seems to need to be after whitenoise
-    'widget_tweaks',
     'rest_framework',
-    'rest_framework.authtoken',
     'authtools',
 
     # this project's apps
