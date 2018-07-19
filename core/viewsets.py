@@ -14,9 +14,9 @@ class DefaultsMixin:
     max_paginate_by = 100
 
 
-class EncampModelViewSet(DefaultsMixin, ModelViewSet):
+class TenantModelViewSet(DefaultsMixin, ModelViewSet):
     """An ABSTRACT class, which other model viewsets should inherit from"""
-    model = None  # model must inherit from TenantMixin
+    model = None  # model should inherit from TenantMixin
 
     def get_queryset(self):
         return self.model.objects.of_requester(self.request)
