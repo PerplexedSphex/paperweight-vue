@@ -1,4 +1,3 @@
-import uuid as uuid_lib
 from django.db import models
 
 from core.models import EncampBaseModel, AddressMixin
