@@ -11,7 +11,8 @@ class TenantMixin(models.Model):
     record_owner = models.ForeignKey(
         'accounts.AccountHolder',
         on_delete=models.CASCADE,
-        related_name="%(app_label)s_%(class)s_owned_set"
+        related_name="%(app_label)s_%(class)s_owned_set",
+        editable=False
     )
     objects = EncampBaseModelManager()
 
@@ -20,7 +21,7 @@ class AddressMixin(models.Model):
     class Meta:
         abstract = True
 
-    full_address_raw = models.CharField(max_length=511, null=True, blank=True)
+    full_address_raw = models.CharField(max_length=511, null=True, blank=True, editable=False)
     street_address = models.CharField(max_length=255, null=True, blank=True)
     city = models.CharField(max_length=127, null=True, blank=True)
     state = models.CharField(max_length=2, choices=State.MODEL_FIELD_CHOICES, null=True, blank=True)
