@@ -1,4 +1,4 @@
-from rest_framework.viewsets import ModelViewSet
+from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
 
 from core.viewsets import DefaultsMixin
 from .models import User, AccountHolder
@@ -19,7 +19,7 @@ class UserViewSet(DefaultsMixin, ModelViewSet):
             return User.objects.none()
 
 
-class AccountHolderViewSet(DefaultsMixin, ModelViewSet):
+class AccountHolderViewSet(DefaultsMixin, ReadOnlyModelViewSet):
     model = AccountHolder
     serializer_class = AccountHolderSerializer
     lookup_field = 'uuid'
