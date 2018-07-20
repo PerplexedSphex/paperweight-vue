@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, RedirectView
 from django.conf import settings
 from rest_framework.routers import DefaultRouter
 
@@ -45,6 +45,9 @@ rest_framework_router.register(
 
 
 urlpatterns = [
+    # todo - replace this with actual homepage which will presumably be the single-page application
+    path('', RedirectView.as_view(pattern_name='dev-home'), name='home'),
+
     path('api/', include(rest_framework_router.urls), name='api-root'),
 ]
 
