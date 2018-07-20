@@ -2,15 +2,22 @@ import uuid as uuid_lib
 from django.db import models
 from authtools.models import AbstractEmailUser
 
-from core.models import AddressMixin
+from people.models import UserPersonMixin
 
 
-class User(AddressMixin, AbstractEmailUser):
-    """Creating this now so it's easier to customize later without borking the db"""
+class User(UserPersonMixin, AbstractEmailUser):
+    """User
+
+    From UserPersonMixin
+    Fields:
+    first_name
+    last_name
+
+    Properties:
+    name (read-only, returns "<first_name> <last_name>")
+    """
     uuid = models.UUIDField(db_index=True, default=uuid_lib.uuid4, unique=True, editable=False)
 
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
     account_holder = models.ForeignKey(
         'accounts.AccountHolder',
         on_delete=models.SET_NULL,
@@ -19,14 +26,8 @@ class User(AddressMixin, AbstractEmailUser):
         help_text='Entity that has an account with Encamp with which this user is associated.'
     )
 
-    @property
-    def name(self):
-        return '{} {}'.format(self.first_name, self.last_name)
-
-    REQUIRED_FIELDS = ['first_name', 'last_name']
-
     class Meta:
-        ordering = ['last_name', 'first_name']
+        ordering = ['last_name', 'first_name']  # from UserPersonMixin
 
     def __str__(self):
         return '{name} <{email}>'.format(
@@ -43,7 +44,7 @@ class User(AddressMixin, AbstractEmailUser):
 
 class AccountHolder(models.Model):
     """Basic tenant entity for multitenanting.
-    All records except for users should have a foreign key to this model."""
+    All records except for Users should have a foreign key to this model."""
     uuid = models.UUIDField(db_index=True, default=uuid_lib.uuid4, unique=True, editable=False)
 
     name = models.CharField(max_length=255)
