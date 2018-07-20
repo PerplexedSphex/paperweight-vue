@@ -1,13 +1,13 @@
-{% extends 'base.html' %}
+{% extends 'dev/dev_base.html' %}
 
-{% block content %}
-  TurboTier2 login page
+{% block dev_content %}
+  Log in
 
   <form method="post" action="{% url 'login' %}">
     {% csrf_token %}
-    {{ form.username }}
-    {{ form.password }}
+    Username: {{ form.username }}
+    Password: {{ form.password }}
     <button type="submit">Sign in</button>
     <input type="hidden" name="next" value="{{ next }}" />
   </form>
-{% endblock content %}
+{% endblock dev_content %}
