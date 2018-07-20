@@ -161,3 +161,6 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
     )
 }
+
+# custom Encamp settings
+TESTING = False
